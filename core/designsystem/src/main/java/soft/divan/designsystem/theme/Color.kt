@@ -1,4 +1,4 @@
-package soft.divan.moodtracker.ui.theme
+package soft.divan.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

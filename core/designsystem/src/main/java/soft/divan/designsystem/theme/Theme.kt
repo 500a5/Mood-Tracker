@@ -1,6 +1,5 @@
-package soft.divan.moodtracker.ui.theme
+package soft.divan.designsystem.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -277,5 +276,7 @@ fun MoodTrackerTheme(
         typography = Typography,
         content = content
     )
+
+
 }
 

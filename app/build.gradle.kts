@@ -8,14 +8,14 @@ plugins {
 
 android {
     namespace = "soft.divan.moodtracker"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "soft.divan.moodtracker"
-        minSdk = 26
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = libs.versions.applicationId.get()
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,19 +26,24 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = libs.versions.java.get()
     }
+    
     buildFeatures {
         compose = true
     }
 }
 
 dependencies {
+
+    implementation(project(":core:designsystem"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -61,6 +66,6 @@ dependencies {
     implementation(libs.hilt.android)
 
     // Hilt Jetpack components
-     //implementation(libs.hilt.navigation.compose)
+    //implementation(libs.hilt.navigation.compose)
     //implementation(libs.androidx.hilt.lifecycle.viewmodel)
 }
