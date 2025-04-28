@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "soft.divan.moodtracker.core.data"
+    namespace = "soft.divan.moodtracker.core.analytics"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
