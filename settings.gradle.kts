@@ -23,3 +23,4 @@ rootProject.name = "Mood Tracker"
 include(":app")
 include(":core:designsystem")
 include(":core:network")
+include(":core:model")
