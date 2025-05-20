@@ -4,7 +4,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import soft.divan.moodtracker.core.navigation.FeatureEntry
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Analytics
 import androidx.compose.material.icons.filled.InsertChartOutlined
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
