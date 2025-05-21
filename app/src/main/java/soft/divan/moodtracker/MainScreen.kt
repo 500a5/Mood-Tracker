@@ -1,5 +1,8 @@
 package soft.divan.moodtracker
 
+import android.annotation.SuppressLint
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
@@ -10,6 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -22,18 +27,34 @@ fun MainScreen(
     analyticsEntry: FeatureEntry,
     calendarEntry: FeatureEntry,
     moreEntry: FeatureEntry,
+    createEntry: FeatureEntry,
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier
+    modifier: Modifier
 ) {
     val screens = listOf(entriesEntry, analyticsEntry, calendarEntry, moreEntry)
     val currentBackStack by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStack?.destination?.route
+    val context = LocalContext.current
 
+    // список маршрутов, которые отображаются в нижнем меню
+    val bottomRoutes = screens.map { it.route }
+
+// если текущий маршрут НЕ входит в нижнюю навигацию, сохраняем последний выбранный из нижнего меню
+    val effectiveRoute = if (currentRoute in bottomRoutes) {
+        currentRoute
+    } else {
+        bottomRoutes.firstOrNull { it in navController.previousBackStackEntry?.destination?.route.orEmpty() }
+            ?: bottomRoutes.first()
+    }
+
+    BackHandler {
+        (context as ComponentActivity).finishAffinity()
+    }
     Scaffold(modifier = modifier.fillMaxSize(),
         bottomBar = {
             NavigationBar {
                 screens.forEach { screen ->
-                    MtNavigationBarItem(currentRoute, screen, navController)
+                    MtNavigationBarItem(effectiveRoute, screen, navController)
                 }
             }
         }
@@ -44,11 +65,13 @@ fun MainScreen(
             feedEntry = entriesEntry,
             analyticsEntry = analyticsEntry,
             calendarEntry = calendarEntry,
-            settingsEntry = moreEntry
+            settingsEntry = moreEntry,
+            createEntry = createEntry,
         )
     }
 }
 
+@SuppressLint("RestrictedApi", "StateFlowValueCalledInComposition")
 @Composable
 private fun RowScope.MtNavigationBarItem(
     currentRoute: String?,
@@ -60,7 +83,7 @@ private fun RowScope.MtNavigationBarItem(
         onClick = {
             if (currentRoute != screen.route) {
                 navController.navigate(screen.route) {
-                    popUpTo(navController.graph.startDestinationId) {
+                    popUpTo(0) {
                         saveState = true
                     }
                     launchSingleTop = true

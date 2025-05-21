@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":feature:analytics"))
     implementation(project(":feature:calendar"))
     implementation(project(":feature:more"))
+    implementation(project(":feature:create"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

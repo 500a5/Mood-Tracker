@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="entries">Записи</string>
+    <string name="create_entry">Создать запись</string>
 
 
 </resources>

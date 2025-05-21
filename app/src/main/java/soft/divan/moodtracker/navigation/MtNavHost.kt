@@ -17,6 +17,7 @@ fun MtNavHost(
     analyticsEntry: FeatureEntry,
     calendarEntry: FeatureEntry,
     settingsEntry: FeatureEntry,
+    createEntry: FeatureEntry
 ) {
     NavHost(
         navController = navController,
@@ -27,5 +28,6 @@ fun MtNavHost(
         with(analyticsEntry) { composable(navController) }
         with(calendarEntry) { composable(navController) }
         with(settingsEntry) { composable(navController) }
+        with(createEntry) {  composable(navController)}
     }
 }
