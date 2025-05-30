@@ -1,4 +1,4 @@
-package soft.divan.moodtracker.feature.create.presenter.data
+package soft.divan.moodtracker.feature.create.presenter
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
@@ -66,7 +66,7 @@ fun SleepQualitySection(
             .padding(16.dp)
     ) {
         Text(
-            text = "Сон",
+            text = stringResource(R.string.dream),
             style = MaterialTheme.typography.titleMedium
         )
 

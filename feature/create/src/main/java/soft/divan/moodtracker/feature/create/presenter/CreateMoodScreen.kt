@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -22,10 +23,9 @@ import soft.divan.designsystem.component.BackButton
 import soft.divan.designsystem.component.CenterAlignedTopAppBarBase
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.DayMoodRating
+import soft.divan.moodtracker.core.model.EmotionCategory
 import soft.divan.moodtracker.core.model.SleepQuality
 import soft.divan.moodtracker.feature.create.R
-import soft.divan.moodtracker.feature.create.presenter.data.DayMoodSelector
-import soft.divan.moodtracker.feature.create.presenter.data.SleepQualitySection
 
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
@@ -41,21 +41,33 @@ fun EntriesScreenPreview() {
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun CreateMoodScreen(modifier: Modifier = Modifier, navController: NavController, viewModel: CreateMoodViewModel = hiltViewModel()) {
+fun CreateMoodScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    viewModel: CreateMoodViewModel = hiltViewModel()
+) {
     var currentMood by remember { mutableStateOf(DayMoodRating.NORMAL) }
     var sleepQuality by remember {
         mutableStateOf(
-            SleepQuality(durationInHours = 7, wentToBedLate = false, wokeUpOften = false, wokeUpTired = false)
+            SleepQuality(
+                durationInHours = 7,
+                wentToBedLate = false,
+                wokeUpOften = false,
+                wokeUpTired = false
+            )
         )
     }
+    val selectedEmotionCategory = remember { mutableStateListOf<EmotionCategory>() }
 
     SleepQualitySection(sleepQuality = sleepQuality, onChange = { sleepQuality = it })
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
-            CenterAlignedTopAppBarBase(title = stringResource(R.string.how_was_your_day), navigationIcon = {
-                BackButton(onClick = { navController.popBackStack() })
-            })
+            CenterAlignedTopAppBarBase(
+                title = stringResource(R.string.how_was_your_day),
+                navigationIcon = {
+                    BackButton(onClick = { navController.popBackStack() })
+                })
         },
     ) {
         Column(
@@ -72,7 +84,18 @@ fun CreateMoodScreen(modifier: Modifier = Modifier, navController: NavController
 
 
 
-            SleepQualitySection( sleepQuality = sleepQuality,  onChange = { newSleepQuality -> sleepQuality = newSleepQuality } )
+            SleepQualitySection(
+                sleepQuality = sleepQuality,
+                onChange = { newSleepQuality -> sleepQuality = newSleepQuality })
+
+            EmotionSelection(selectedEmotions = selectedEmotionCategory,
+                onEmotionToggle = { emotion ->
+                    if (selectedEmotionCategory.contains(emotion)) {
+                        selectedEmotionCategory.remove(emotion)
+                    } else {
+                        selectedEmotionCategory.add(emotion)
+                    }
+                })
         }
     }
 }

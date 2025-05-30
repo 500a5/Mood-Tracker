@@ -1,19 +1,13 @@
-package soft.divan.moodtracker.feature.create.presenter.data
+package soft.divan.moodtracker.feature.create.presenter
 
-import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.createRippleModifierNode
-import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LocalRippleConfiguration
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.DayMoodRating
+import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
@@ -85,12 +80,12 @@ fun DayMoodSelector(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = mood.mapToPresentr().emoji,
+                    text = mood.mapToPresenter().emoji,
                     style = MaterialTheme.typography.displaySmall,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
-                    text = stringResource(mood.mapToPresentr().labelResId),
+                    text = stringResource(mood.mapToPresenter().labelResId),
                     maxLines = 1,
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.Center,

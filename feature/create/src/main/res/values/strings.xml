@@ -8,10 +8,30 @@
     <string name="mood_normal">Normal</string>
     <string name="mood_bad">Bad</string>
     <string name="mood_awful">Awful</string>
+
+    <string name="dream">Dream</string>
     <string name="how_was_your_day">How was your day?</string>
     <string name="number_of_hours_of_sleep">Number of hours of sleep: %1$s</string>
     <string name="went_to_bed_late">I went to bed late</string>
     <string name="woke_up_at_night">Woke up at night</string>
     <string name="woke_up_tired">I woke up tired</string>
+
+    <string name="emotions">Emotions</string>
+
+    <string name="emotion_happy">Happy</string>
+    <string name="emotion_anxious">Anxious</string>
+    <string name="emotion_sad">Sad</string>
+    <string name="emotion_angry">Angry</string>
+    <string name="emotion_grateful">Grateful</string>
+    <string name="emotion_calm">Calm</string>
+    <string name="emotion_lonely">Lonely</string>
+    <string name="emotion_proud">Proud</string>
+    <string name="emotion_stress">Stress</string>
+    <string name="emotion_relaxation">Relaxation</string>
+    <string name="emotion_productivity">Productivity</string>
+    <string name="emotion_condition">Condition</string>
+    <string name="emotion_uncertainty">Uncertainty</string>
+
+
 
 </resources>
