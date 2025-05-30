@@ -8,4 +8,9 @@
     <string name="mood_normal">Нормально</string>
     <string name="mood_bad">Плохо</string>
     <string name="mood_awful">Ужасно</string>
+    <string name="how_was_your_day">Как прошел твой день?</string>
+    <string name="number_of_hours_of_sleep">Количество часов сна: %1$s</string>
+    <string name="went_to_bed_late">Лёг поздно</string>
+    <string name="woke_up_at_night">Просыпался ночью</string>
+    <string name="woke_up_tired">Проснулся уставшим</string>
 </resources>
