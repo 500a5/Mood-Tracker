@@ -32,7 +32,8 @@ dependencies {
     implementation(project(":core:navigation"))
 
     implementation(project(":core:designsystem"))
-
+    implementation(libs.androidx.ui.tooling.preview.android)
+    debugImplementation(libs.ui.tooling)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)

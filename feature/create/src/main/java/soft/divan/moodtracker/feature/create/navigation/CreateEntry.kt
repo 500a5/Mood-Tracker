@@ -22,7 +22,7 @@ object CreateEntry : FeatureEntry {
 
     override fun NavGraphBuilder.composable(navController: NavController) {
         composable(CreateEntry.route) {
-            CreateMoodScreen(navController)
+            CreateMoodScreen(navController = navController)
         }
     }
 }

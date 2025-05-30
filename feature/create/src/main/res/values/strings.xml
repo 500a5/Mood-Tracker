@@ -2,4 +2,11 @@
 <resources>
     <string name="calendar">Calendar</string>
     <string name="create">Create mood</string>
+
+    <string name="mood_amazing">Amazing</string>
+    <string name="mood_good">Good</string>
+    <string name="mood_normal">Normal</string>
+    <string name="mood_bad">Bad</string>
+    <string name="mood_awful">Awful</string>
+
 </resources>

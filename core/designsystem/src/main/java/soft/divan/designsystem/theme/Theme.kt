@@ -277,6 +277,5 @@ fun MoodTrackerTheme(
         content = content
     )
 
-
 }
 

@@ -11,7 +11,7 @@ import soft.divan.moodtracker.core.navigation.FeatureEntry
 
 @Composable
 fun MtNavHost(
-    innerPadding: PaddingValues,
+
     navController: NavHostController,
     feedEntry: FeatureEntry,
     analyticsEntry: FeatureEntry,
@@ -22,7 +22,6 @@ fun MtNavHost(
     NavHost(
         navController = navController,
         startDestination = feedEntry.route,
-        modifier = Modifier.padding(innerPadding)
     ) {
         with(feedEntry) { composable(navController) }
         with(analyticsEntry) { composable(navController) }

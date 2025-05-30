@@ -3,5 +3,9 @@
     <string name="calendar">Календарь</string>
     <string name="create">Create mood</string>
 
-
+    <string name="mood_amazing">Супер</string>
+    <string name="mood_good">Хорошо</string>
+    <string name="mood_normal">Нормально</string>
+    <string name="mood_bad">Плохо</string>
+    <string name="mood_awful">Ужасно</string>
 </resources>
