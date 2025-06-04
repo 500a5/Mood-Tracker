@@ -1,13 +1,10 @@
 package soft.divan.moodtracker.feature.create.presenter
 
-import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import soft.divan.designsystem.component.LabeledBorderedContainer
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.SleepQuality
 import soft.divan.moodtracker.feature.create.R
@@ -55,57 +53,66 @@ fun SleepQualitySection(
     sleepQuality: SleepQuality,
     onChange: (SleepQuality) -> Unit
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .border(
-                width = 2.dp,
-                color = MaterialTheme.colorScheme.primary,
-                shape = RoundedCornerShape(12.dp)
-            )
-            .padding(16.dp)
-    ) {
-        Text(
-            text = stringResource(R.string.dream),
-            style = MaterialTheme.typography.titleMedium
-        )
+    LabeledBorderedContainer(titleResId = R.string.dream, modifier = modifier) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
 
-        // Длительность сна
-        Column {
-            Text(stringResource(R.string.number_of_hours_of_sleep, sleepQuality.durationInHours))
-            Slider(
-                value = sleepQuality.durationInHours.toFloat(),
-                onValueChange = { newHours ->
-                    onChange(sleepQuality.copy(durationInHours = newHours.toInt()))
-                },
-                valueRange = 0f..20f,
-                steps = 19
+            SleepDurationSlider(
+                duration = sleepQuality.durationInHours,
+                onDurationChange = { onChange(sleepQuality.copy(durationInHours = it)) }
             )
-        }
 
-        // Флажки
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(
+            CheckboxRow(
                 checked = sleepQuality.wentToBedLate,
+                label = stringResource(R.string.went_to_bed_late),
                 onCheckedChange = { onChange(sleepQuality.copy(wentToBedLate = it)) }
             )
-            Text(stringResource(R.string.went_to_bed_late))
-        }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(
+            CheckboxRow(
                 checked = sleepQuality.wokeUpOften,
+                label = stringResource(R.string.woke_up_at_night),
                 onCheckedChange = { onChange(sleepQuality.copy(wokeUpOften = it)) }
             )
-            Text(stringResource(R.string.woke_up_at_night))
-        }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(
+            CheckboxRow(
                 checked = sleepQuality.wokeUpTired,
+                label = stringResource(R.string.woke_up_tired),
                 onCheckedChange = { onChange(sleepQuality.copy(wokeUpTired = it)) }
             )
-            Text(stringResource(R.string.woke_up_tired))
         }
+    }
+}
+
+@Composable
+private fun SleepDurationSlider(
+    duration: Int,
+    onDurationChange: (Int) -> Unit
+) {
+    Column {
+        Text(stringResource(R.string.number_of_hours_of_sleep, duration))
+        Slider(
+            value = duration.toFloat(),
+            onValueChange = { onDurationChange(it.toInt()) },
+            valueRange = 0f..20f,
+            steps = 19
+        )
+    }
+}
+
+@Composable
+private fun CheckboxRow(
+    checked: Boolean,
+    label: String,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Checkbox(
+            modifier = Modifier.height(32.dp),
+            checked = checked,
+            onCheckedChange = onCheckedChange
+        )
+        Text(text = label)
     }
 }

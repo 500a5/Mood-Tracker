@@ -95,8 +95,8 @@ fun CreateMoodScreen(
                 sleepQuality = sleepQuality,
                 onChange = { newSleepQuality -> sleepQuality = newSleepQuality })
 
-            EmotionSelection(selectedEmotions = selectedEmotionCategory,
-                onEmotionToggle = { emotion ->
+            EmotionSelection(selected = selectedEmotionCategory,
+                onSelected = { emotion ->
                     if (selectedEmotionCategory.contains(emotion)) {
                         selectedEmotionCategory.remove(emotion)
                     } else {
@@ -117,7 +117,7 @@ fun CreateMoodScreen(
             )
 
             val selectedHobbies = remember { mutableStateListOf<HobbyCategory>() }
-            HobbyCategorySelection(selectedHobbies = selectedHobbies, onEmotionToggle = { hobby ->
+            HobbyCategorySelection(selected = selectedHobbies, onSelected = { hobby ->
                 if (selectedHobbies.contains(hobby)) {
                     selectedHobbies.remove(hobby)
                 } else {
