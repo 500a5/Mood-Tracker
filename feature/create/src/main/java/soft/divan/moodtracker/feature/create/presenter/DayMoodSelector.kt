@@ -80,7 +80,7 @@ fun DayMoodSelector(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = mood.mapToPresenter().emoji,
+                    text = stringResource(mood.mapToPresenter().emojiResId),
                     style = MaterialTheme.typography.displaySmall,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )

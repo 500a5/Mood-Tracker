@@ -46,7 +46,7 @@ fun EmotionSelection(
             onClick = onSelected,
             labelProvider = {
                 val p = it.mapToPresenter()
-                "${p.emoji} ${stringResource(p.labelResId)}"
+                "${stringResource(p.emojiResId)} ${stringResource(p.labelResId)}"
             }
         )
     }

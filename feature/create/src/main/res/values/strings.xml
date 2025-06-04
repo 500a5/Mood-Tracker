@@ -3,10 +3,15 @@
     <string name="calendar">Calendar</string>
     <string name="create">Create mood</string>
 
+    <string name="mood_amazing_emoji" translatable="false">😍</string>
     <string name="mood_amazing">Amazing</string>
+    <string name="mood_good_emoji" translatable="false">🙂</string>
     <string name="mood_good">Good</string>
+    <string name="mood_normal_emoji" translatable="false">😐</string>
     <string name="mood_normal">Normal</string>
+    <string name="mood_bad_emoji" translatable="false">🙁</string>
     <string name="mood_bad">Bad</string>
+    <string name="mood_awful_emoji" translatable="false">😫</string>
     <string name="mood_awful">Awful</string>
 
     <string name="dream">Dream</string>
@@ -17,33 +22,57 @@
     <string name="woke_up_tired">I woke up tired</string>
 
     <string name="emotions">Emotions</string>
-
+    <string name="emotion_happy_emoji" translatable="false">😊</string>
     <string name="emotion_happy">Happy</string>
+    <string name="emotion_anxious_emoji" translatable="false">😰</string>
     <string name="emotion_anxious">Anxious</string>
+    <string name="emotion_sad_emoji" translatable="false">😢</string>
     <string name="emotion_sad">Sad</string>
+    <string name="emotion_angry_emoji" translatable="false">😡</string>
     <string name="emotion_angry">Angry</string>
+    <string name="emotion_grateful_emoji" translatable="false">🙏</string>
     <string name="emotion_grateful">Grateful</string>
+    <string name="emotion_calm_emoji" translatable="false">😌</string>
     <string name="emotion_calm">Calm</string>
+    <string name="emotion_lonely_emoji" translatable="false">🥺</string>
     <string name="emotion_lonely">Lonely</string>
+    <string name="emotion_proud_emoji" translatable="false">😎</string>
     <string name="emotion_proud">Proud</string>
+    <string name="emotion_stress_emoji" translatable="false">😵</string>
     <string name="emotion_stress">Stress</string>
+    <string name="emotion_relaxation_emoji" translatable="false">🛀</string>
     <string name="emotion_relaxation">Relaxation</string>
+    <string name="emotion_productivity_emoji" translatable="false">⚡</string>
     <string name="emotion_productivity">Productivity</string>
+    <string name="emotion_condition_emoji" translatable="false">😴</string>
     <string name="emotion_condition">Condition</string>
+    <string name="emotion_uncertainty_emoji" translatable="false">🤔</string>
     <string name="emotion_uncertainty">Uncertainty</string>
 
+
     <string name="nutrition">Nutrition</string>
+    <string name="nutrition_healthy_emoji" translatable="false">🥗</string>
     <string name="nutrition_healthy">healthy eating</string>
+    <string name="nutrition_overeat_emoji" translatable="false">🤤</string>
     <string name="nutrition_overeat">Overeaten</string>
+    <string name="nutrition_skipped_meal_emoji" translatable="false">🍽️</string>
     <string name="nutrition_skipped_meal">Missed a meal</string>
+    <string name="nutrition_junk_food_emoji" translatable="false">🍔</string>
     <string name="nutrition_junk_food">Fast food</string>
 
     <string name="hobby">Hobby</string>
+    <string name="hobby_reading_emoji" translatable="false">📚</string>
     <string name="hobby_reading">Reading</string>
+    <string name="hobby_sports_emoji" translatable="false">🏃</string>
     <string name="hobby_sports">Sports</string>
+    <string name="hobby_music_emoji" translatable="false">🎵</string>
     <string name="hobby_music">Music</string>
+    <string name="hobby_art_emoji" translatable="false">🎨</string>
     <string name="hobby_art">Art</string>
+    <string name="hobby_walking_emoji" translatable="false">🚶</string>
     <string name="hobby_walking">Walking</string>
+    <string name="hobby_games_emoji" translatable="false">🎮</string>
     <string name="hobby_games">Games</string>
+    <string name="hobby_other_emoji" translatable="false">✨</string>
     <string name="hobby_other">Other</string>
 </resources>
