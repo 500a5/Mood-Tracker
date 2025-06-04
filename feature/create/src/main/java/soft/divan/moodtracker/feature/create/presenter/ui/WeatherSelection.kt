@@ -1,52 +1,49 @@
 package soft.divan.moodtracker.feature.create.presenter.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import soft.divan.designsystem.component.FilterChipFlow
 import soft.divan.designsystem.component.LabeledBorderedContainer
 import soft.divan.designsystem.theme.MoodTrackerTheme
-import soft.divan.moodtracker.core.model.HealthState
+import soft.divan.moodtracker.core.model.WeatherType
 import soft.divan.moodtracker.feature.create.R
 import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
 
+
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
-fun PreviewHealthStateSelection() {
-    val selected = remember { mutableStateListOf<HealthState>() }
+fun PreviewWeatherSelection() {
+    var selected by remember { mutableStateOf<WeatherType?>(WeatherType.SUNNY) }
     MoodTrackerTheme {
-        HealthStateSelection(
+        WeatherSelection(
             selected = selected,
-            onSelected = { state ->
-                if (selected.contains(state)) {
-                    selected.remove(state)
-                } else {
-                    selected.add(state)
-                }
-            }
+            onSelected = { selected = it }
         )
     }
 }
 
 @Composable
-fun HealthStateSelection(
-    selected: List<HealthState>,
-    onSelected: (HealthState) -> Unit,
+fun WeatherSelection(
+    selected: WeatherType?,
+    onSelected: (WeatherType) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LabeledBorderedContainer(
-        titleResId = R.string.health,
+        titleResId = R.string.weather,
         modifier = modifier
     ) {
         FilterChipFlow(
-            items = HealthState.entries,
-            selected = selected,
-            onClick = onSelected,
-            labelProvider = { state ->
-                val presenter = state.mapToPresenter()
+            items = WeatherType.entries.toList(),
+            selected = listOfNotNull(selected),
+            onClick = { onSelected(it) },
+            labelProvider = {
+                val presenter = it.mapToPresenter()
                 "${stringResource(presenter.emojiResId)} ${stringResource(presenter.labelResId)}"
             }
         )

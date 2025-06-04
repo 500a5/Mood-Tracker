@@ -92,4 +92,18 @@
     <string name="health_other_emoji" translatable="false">❓</string>
     <string name="health_other">Other</string>
 
+    <string name="weather">Weather</string>
+    <string name="weather_sunny_emoji" translatable="false">☀️</string>
+    <string name="weather_sunny">Sunny</string>
+    <string name="weather_cloudy_emoji" translatable="false">☁️</string>
+    <string name="weather_cloudy">Cloudy</string>
+    <string name="weather_rainy_emoji" translatable="false">🌧️</string>
+    <string name="weather_rainy">Rainy</string>
+    <string name="weather_snowy_emoji" translatable="false">❄️</string>
+    <string name="weather_snowy">Snowy</string>
+    <string name="weather_windy_emoji" translatable="false">💨</string>
+    <string name="weather_windy">Windy</string>
+    <string name="weather_foggy_emoji" translatable="false">🌫️</string>
+    <string name="weather_foggy">Foggy</string>
+
 </resources>

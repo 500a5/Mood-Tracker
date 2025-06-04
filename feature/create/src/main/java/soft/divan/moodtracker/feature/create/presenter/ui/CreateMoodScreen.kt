@@ -30,6 +30,7 @@ import soft.divan.moodtracker.core.model.HealthState
 import soft.divan.moodtracker.core.model.HobbyCategory
 import soft.divan.moodtracker.core.model.NutritionQuality
 import soft.divan.moodtracker.core.model.SleepQuality
+import soft.divan.moodtracker.core.model.WeatherType
 import soft.divan.moodtracker.feature.create.R
 import soft.divan.moodtracker.feature.create.presenter.CreateMoodViewModel
 
@@ -135,6 +136,12 @@ fun CreateMoodScreen(
                     selectedHealth.add(health)
                 }
             })
+
+            var selectedWeather by remember { mutableStateOf<WeatherType?>(WeatherType.SUNNY) }
+            WeatherSelection(
+                selected = selectedWeather,
+                onSelected = { selectedWeather = it }
+            )
         }
     }
 }

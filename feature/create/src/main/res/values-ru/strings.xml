@@ -55,5 +55,12 @@
     <string name="health_illness">Болезнь</string>
     <string name="health_other">Другое</string>
 
+    <string name="weather">Погода</string>
+    <string name="weather_sunny">Солнечно</string>
+    <string name="weather_cloudy">Облачно</string>
+    <string name="weather_rainy">Дождь</string>
+    <string name="weather_snowy">Снег</string>
+    <string name="weather_windy">Ветрено</string>
+    <string name="weather_foggy">Туман</string>
 
 </resources>
