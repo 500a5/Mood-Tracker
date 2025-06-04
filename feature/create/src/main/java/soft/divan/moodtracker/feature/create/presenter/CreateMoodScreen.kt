@@ -26,6 +26,7 @@ import soft.divan.designsystem.component.CenterAlignedTopAppBarBase
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.DayMoodRating
 import soft.divan.moodtracker.core.model.EmotionCategory
+import soft.divan.moodtracker.core.model.HobbyCategory
 import soft.divan.moodtracker.core.model.NutritionQuality
 import soft.divan.moodtracker.core.model.SleepQuality
 import soft.divan.moodtracker.feature.create.R
@@ -114,6 +115,15 @@ fun CreateMoodScreen(
                     }
                  }
             )
+
+            val selectedHobbies = remember { mutableStateListOf<HobbyCategory>() }
+            HobbyCategorySelection(selectedHobbies = selectedHobbies, onEmotionToggle = { hobby ->
+                if (selectedHobbies.contains(hobby)) {
+                    selectedHobbies.remove(hobby)
+                } else {
+                    selectedHobbies.add(hobby)
+                }
+            })
         }
     }
 }

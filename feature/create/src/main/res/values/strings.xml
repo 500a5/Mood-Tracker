@@ -38,5 +38,12 @@
     <string name="nutrition_skipped_meal">Missed a meal</string>
     <string name="nutrition_junk_food">Fast food</string>
 
-
+    <string name="hobby">Hobby</string>
+    <string name="hobby_reading">Reading</string>
+    <string name="hobby_sports">Sports</string>
+    <string name="hobby_music">Music</string>
+    <string name="hobby_art">Art</string>
+    <string name="hobby_walking">Walking</string>
+    <string name="hobby_games">Games</string>
+    <string name="hobby_other">Other</string>
 </resources>

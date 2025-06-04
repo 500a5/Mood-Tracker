@@ -37,6 +37,13 @@
     <string name="nutrition_skipped_meal">Пропустил(а) приём пищи</string>
     <string name="nutrition_junk_food">Фастфуд</string>
 
-
+    <string name="hobby">Хобби</string>
+    <string name="hobby_reading">Чтение</string>
+    <string name="hobby_sports">Спорт</string>
+    <string name="hobby_music">Музыка</string>
+    <string name="hobby_art">Искусство</string>
+    <string name="hobby_walking">Прогулки</string>
+    <string name="hobby_games">Игры</string>
+    <string name="hobby_other">Другое</string>
 
 </resources>
