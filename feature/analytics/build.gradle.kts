@@ -30,9 +30,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:navigation"))
+    implementation(projects.core.navigation)
 
-    implementation(project(":core:designsystem"))
+    implementation(projects.core.designsystem)
 
     implementation(libs.androidx.ui.tooling.preview.android)
     debugImplementation(libs.ui.tooling)

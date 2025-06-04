@@ -43,13 +43,15 @@ android {
 
 dependencies {
 
-    implementation(project(":core:designsystem"))
-    implementation(project(":core:navigation"))
-    implementation(project(":feature:entries"))
-    implementation(project(":feature:analytics"))
-    implementation(project(":feature:calendar"))
-    implementation(project(":feature:more"))
-    implementation(project(":feature:create"))
+    implementation(projects.core.navigation)
+
+    implementation(projects.core.designsystem)
+    implementation(projects.feature.entries)
+    implementation(projects.feature.analytics)
+    implementation(projects.feature.calendar)
+    implementation(projects.feature.more)
+    implementation(projects.feature.create)
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

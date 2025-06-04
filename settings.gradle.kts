@@ -18,8 +18,10 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 
-rootProject.name = "Mood Tracker"
+rootProject.name = "MoodTracker"
 include(":app")
 include(":core:designsystem")
 include(":core:network")
