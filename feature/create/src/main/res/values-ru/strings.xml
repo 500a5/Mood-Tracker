@@ -31,6 +31,11 @@
     <string name="emotion_condition">Усталость</string>
     <string name="emotion_uncertainty">Неуверенность</string>
 
+    <string name="nutrition">Питание</string>
+    <string name="nutrition_healthy">Здоровое питание</string>
+    <string name="nutrition_overeat">Переел(а)</string>
+    <string name="nutrition_skipped_meal">Пропустил(а) приём пищи</string>
+    <string name="nutrition_junk_food">Фастфуд</string>
 
 
 

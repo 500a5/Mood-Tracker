@@ -32,6 +32,11 @@
     <string name="emotion_condition">Condition</string>
     <string name="emotion_uncertainty">Uncertainty</string>
 
+    <string name="nutrition">Nutrition</string>
+    <string name="nutrition_healthy">healthy eating</string>
+    <string name="nutrition_overeat">Overeaten</string>
+    <string name="nutrition_skipped_meal">Missed a meal</string>
+    <string name="nutrition_junk_food">Fast food</string>
 
 
 </resources>

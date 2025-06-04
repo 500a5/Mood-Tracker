@@ -8,7 +8,7 @@ data class DailyMoodEntry(
     val moodRating: DayMoodRating,
     val emotions: List<EmotionCategory>?,
     val sleep: SleepQuality?,
-    val nutrition: NutritionQuality?,
+    val nutrition:  List<NutritionQuality>?,
     val hobbies: List<HobbyCategory>?,
     val health: List<HealthState>?,
     val weather: WeatherType?,

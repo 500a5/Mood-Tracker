@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +26,7 @@ import soft.divan.designsystem.component.CenterAlignedTopAppBarBase
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.DayMoodRating
 import soft.divan.moodtracker.core.model.EmotionCategory
+import soft.divan.moodtracker.core.model.NutritionQuality
 import soft.divan.moodtracker.core.model.SleepQuality
 import soft.divan.moodtracker.feature.create.R
 
@@ -59,6 +62,8 @@ fun CreateMoodScreen(
     }
     val selectedEmotionCategory = remember { mutableStateListOf<EmotionCategory>() }
 
+    val selectedNutrition = remember { mutableStateListOf<NutritionQuality>() }
+
     SleepQualitySection(sleepQuality = sleepQuality, onChange = { sleepQuality = it })
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -72,6 +77,7 @@ fun CreateMoodScreen(
     ) {
         Column(
             modifier = Modifier
+                .verticalScroll(rememberScrollState())
                 .padding(it)
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -96,6 +102,18 @@ fun CreateMoodScreen(
                         selectedEmotionCategory.add(emotion)
                     }
                 })
+
+
+            NutritionSelection(
+                selected = selectedNutrition,
+                onSelected = { nutritionQuality ->
+                    if (selectedNutrition.contains(nutritionQuality)) {
+                        selectedNutrition.remove(nutritionQuality)
+                    } else {
+                        selectedNutrition.add(nutritionQuality)
+                    }
+                 }
+            )
         }
     }
 }
