@@ -1,5 +1,4 @@
-package soft.divan.moodtracker.feature.create.presenter
-
+package soft.divan.moodtracker.feature.create.presenter.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -10,22 +9,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import soft.divan.designsystem.component.FilterChipFlow
 import soft.divan.designsystem.component.LabeledBorderedContainer
 import soft.divan.designsystem.theme.MoodTrackerTheme
-import soft.divan.moodtracker.core.model.NutritionQuality
+import soft.divan.moodtracker.core.model.EmotionCategory
 import soft.divan.moodtracker.feature.create.R
 import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
 
+
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
-fun NutritionSelectorPreview() {
-    val selectedNutrition = remember { mutableStateListOf<NutritionQuality>() }
+fun EmotionSelectionPreview() {
+    val selected = remember { mutableStateListOf<EmotionCategory>() }
     MoodTrackerTheme {
-        NutritionSelection(
-            selected = selectedNutrition,
-            onSelected = { nutritionQuality ->
-                if (selectedNutrition.contains(nutritionQuality)) {
-                    selectedNutrition.remove(nutritionQuality)
+        EmotionSelection(
+            selected = selected,
+            onSelected = { emotion ->
+                if (selected.contains(emotion)) {
+                    selected.remove(emotion)
                 } else {
-                    selectedNutrition.add(nutritionQuality)
+                    selected.add(emotion)
                 }
             }
         )
@@ -33,14 +33,15 @@ fun NutritionSelectorPreview() {
 }
 
 @Composable
-fun NutritionSelection(
-    selected: List<NutritionQuality>,
-    onSelected: (NutritionQuality) -> Unit,
+fun EmotionSelection(
+    selected: List<EmotionCategory>,
+    onSelected: (EmotionCategory) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LabeledBorderedContainer(titleResId = R.string.nutrition, modifier = modifier) {
+
+    LabeledBorderedContainer(titleResId = R.string.emotions, modifier = modifier) {
         FilterChipFlow(
-            items = NutritionQuality.entries,
+            items = EmotionCategory.entries,
             selected = selected,
             onClick = onSelected,
             labelProvider = {

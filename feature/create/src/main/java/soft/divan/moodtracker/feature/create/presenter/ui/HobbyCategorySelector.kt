@@ -1,4 +1,4 @@
-package soft.divan.moodtracker.feature.create.presenter
+package soft.divan.moodtracker.feature.create.presenter.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf

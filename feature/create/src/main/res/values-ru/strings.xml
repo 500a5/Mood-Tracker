@@ -46,4 +46,14 @@
     <string name="hobby_games">Игры</string>
     <string name="hobby_other">Другое</string>
 
+    <string name="health">Здоровье</string>
+    <string name="health_healthy">Здоров</string>
+    <string name="health_headache">Головная боль</string>
+    <string name="health_stomachache">Боль в животе</string>
+    <string name="health_toothache">Зубная боль</string>
+    <string name="health_fatigue">Усталость</string>
+    <string name="health_illness">Болезнь</string>
+    <string name="health_other">Другое</string>
+
+
 </resources>

@@ -75,4 +75,21 @@
     <string name="hobby_games">Games</string>
     <string name="hobby_other_emoji" translatable="false">✨</string>
     <string name="hobby_other">Other</string>
+
+    <string name="health">Health</string>
+    <string name="health_healthy_emoji" translatable="false">💪</string>
+    <string name="health_healthy">Healthy</string>
+    <string name="health_headache_emoji" translatable="false">🤕</string>
+    <string name="health_headache">Headache</string>
+    <string name="health_stomachache_emoji" translatable="false">🤢</string>
+    <string name="health_stomachache">Stomachache</string>
+    <string name="health_toothache_emoji" translatable="false">🦷</string>
+    <string name="health_toothache">Toothache</string>
+    <string name="health_fatigue_emoji" translatable="false">🥱</string>
+    <string name="health_fatigue">Fatigue</string>
+    <string name="health_illness_emoji" translatable="false">🤒</string>
+    <string name="health_illness">Illness</string>
+    <string name="health_other_emoji" translatable="false">❓</string>
+    <string name="health_other">Other</string>
+
 </resources>

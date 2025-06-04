@@ -1,4 +1,4 @@
-package soft.divan.moodtracker.feature.create.presenter
+package soft.divan.moodtracker.feature.create.presenter.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
@@ -26,10 +26,12 @@ import soft.divan.designsystem.component.CenterAlignedTopAppBarBase
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.DayMoodRating
 import soft.divan.moodtracker.core.model.EmotionCategory
+import soft.divan.moodtracker.core.model.HealthState
 import soft.divan.moodtracker.core.model.HobbyCategory
 import soft.divan.moodtracker.core.model.NutritionQuality
 import soft.divan.moodtracker.core.model.SleepQuality
 import soft.divan.moodtracker.feature.create.R
+import soft.divan.moodtracker.feature.create.presenter.CreateMoodViewModel
 
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
@@ -122,6 +124,15 @@ fun CreateMoodScreen(
                     selectedHobbies.remove(hobby)
                 } else {
                     selectedHobbies.add(hobby)
+                }
+            })
+
+            val selectedHealth = remember {  mutableStateListOf<HealthState>() }
+            HealthStateSelection(selected = selectedHealth, onSelected = { health ->
+                if (selectedHealth.contains(health)) {
+                    selectedHealth.remove(health)
+                } else {
+                    selectedHealth.add(health)
                 }
             })
         }
