@@ -63,4 +63,11 @@
     <string name="weather_windy">Ветрено</string>
     <string name="weather_foggy">Туман</string>
 
+    <string name="habits">Привычки</string>
+    <string name="habit_alcohol">Алкоголь</string>
+    <string name="habit_smoking">Курение</string>
+    <string name="habit_caffeine">Кофеин</string>
+    <string name="habit_screen_time">Экранное время</string>
+    <string name="habit_meditation">Медитация</string>
+    <string name="habit_exercise">Тренировка</string>
 </resources>

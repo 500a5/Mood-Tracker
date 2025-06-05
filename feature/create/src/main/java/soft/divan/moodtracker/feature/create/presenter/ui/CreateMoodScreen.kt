@@ -26,6 +26,7 @@ import soft.divan.designsystem.component.CenterAlignedTopAppBarBase
 import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.DayMoodRating
 import soft.divan.moodtracker.core.model.EmotionCategory
+import soft.divan.moodtracker.core.model.HabitType
 import soft.divan.moodtracker.core.model.HealthState
 import soft.divan.moodtracker.core.model.HobbyCategory
 import soft.divan.moodtracker.core.model.NutritionQuality
@@ -142,6 +143,15 @@ fun CreateMoodScreen(
                 selected = selectedWeather,
                 onSelected = { selectedWeather = it }
             )
+
+            val selectedHabit = remember {  mutableStateListOf<HabitType>() }
+            HabitSelection(selected = selectedHabit, onSelected = { health ->
+                if (selectedHabit.contains(health)) {
+                    selectedHabit.remove(health)
+                } else {
+                    selectedHabit.add(health)
+                }
+            })
         }
     }
 }

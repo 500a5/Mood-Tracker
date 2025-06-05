@@ -106,4 +106,19 @@
     <string name="weather_foggy_emoji" translatable="false">🌫️</string>
     <string name="weather_foggy">Foggy</string>
 
+    <string name="habits">Habits</string>
+    <string name="habit_alcohol_emoji" translatable="false">🍷</string>
+    <string name="habit_alcohol">Alcohol</string>
+    <string name="habit_smoking_emoji" translatable="false">🚬</string>
+    <string name="habit_smoking">Smoking</string>
+    <string name="habit_caffeine_emoji" translatable="false">☕️</string>
+    <string name="habit_caffeine">Caffeine</string>
+    <string name="habit_screen_time_emoji" translatable="false">📱</string>
+    <string name="habit_screen_time">Screen_time</string>
+    <string name="habit_meditation_emoji" translatable="false">🧘</string>
+    <string name="habit_meditation">Meditation</string>
+    <string name="habit_exercise_emoji" translatable="false">🏃</string>
+    <string name="habit_exercise">Exercise</string>
+
+
 </resources>
