@@ -152,6 +152,14 @@ fun CreateMoodScreen(
                     selectedHabit.add(health)
                 }
             })
+
+            var note by remember { mutableStateOf("") }
+            MoodTrackerTheme {
+                NoteInput(
+                    note = note,
+                    onNoteChange = { note = it }
+                )
+            }
         }
     }
 }

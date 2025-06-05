@@ -70,4 +70,8 @@
     <string name="habit_screen_time">Экранное время</string>
     <string name="habit_meditation">Медитация</string>
     <string name="habit_exercise">Тренировка</string>
+
+    <string name="note">Заметка</string>
+    <string name="note_placeholder">Введите свои мысли, наблюдения или комментарии...</string>
+
 </resources>

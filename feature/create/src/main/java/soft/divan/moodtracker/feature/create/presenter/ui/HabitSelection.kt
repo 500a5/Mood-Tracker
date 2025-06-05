@@ -8,6 +8,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import soft.divan.designsystem.component.FilterChipFlow
 import soft.divan.designsystem.component.LabeledBorderedContainer
+import soft.divan.designsystem.theme.MoodTrackerTheme
 import soft.divan.moodtracker.core.model.HabitType
 import soft.divan.moodtracker.feature.create.R
 import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
@@ -16,18 +17,19 @@ import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
 @Composable
 fun PreviewHabitSelection() {
     val selected = remember { mutableStateListOf<HabitType>() }
+    MoodTrackerTheme {
+        HabitSelection(
+            selected = selected,
+            onSelected = { habit ->
 
-    HabitSelection(
-        selected = selected,
-        onSelected = { habit ->
-
-            if (selected.contains(habit)) {
-                selected.remove(habit)
-            } else {
-                selected.add(habit)
+                if (selected.contains(habit)) {
+                    selected.remove(habit)
+                } else {
+                    selected.add(habit)
+                }
             }
-        }
-    )
+        )
+    }
 }
 
 @Composable

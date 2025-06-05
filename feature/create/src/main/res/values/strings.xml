@@ -120,5 +120,8 @@
     <string name="habit_exercise_emoji" translatable="false">🏃</string>
     <string name="habit_exercise">Exercise</string>
 
+    <string name="note">Note</string>
+    <string name="note_placeholder">Enter your thoughts, observations, or comments...</string>
+
 
 </resources>
