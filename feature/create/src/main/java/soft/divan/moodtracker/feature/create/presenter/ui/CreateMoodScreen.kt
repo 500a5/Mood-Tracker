@@ -4,10 +4,16 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -117,7 +123,7 @@ fun CreateMoodScreen(
                     } else {
                         selectedNutrition.add(nutritionQuality)
                     }
-                 }
+                }
             )
 
             val selectedHobbies = remember { mutableStateListOf<HobbyCategory>() }
@@ -129,7 +135,7 @@ fun CreateMoodScreen(
                 }
             })
 
-            val selectedHealth = remember {  mutableStateListOf<HealthState>() }
+            val selectedHealth = remember { mutableStateListOf<HealthState>() }
             HealthStateSelection(selected = selectedHealth, onSelected = { health ->
                 if (selectedHealth.contains(health)) {
                     selectedHealth.remove(health)
@@ -144,7 +150,7 @@ fun CreateMoodScreen(
                 onSelected = { selectedWeather = it }
             )
 
-            val selectedHabit = remember {  mutableStateListOf<HabitType>() }
+            val selectedHabit = remember { mutableStateListOf<HabitType>() }
             HabitSelection(selected = selectedHabit, onSelected = { health ->
                 if (selectedHabit.contains(health)) {
                     selectedHabit.remove(health)
@@ -154,14 +160,39 @@ fun CreateMoodScreen(
             })
 
             var note by remember { mutableStateOf("") }
-            MoodTrackerTheme {
-                NoteInput(
-                    note = note,
-                    onNoteChange = { note = it }
-                )
-            }
+            NoteInput(
+                note = note,
+                onNoteChange = { note = it }
+            )
+
+
+
+
+            SaveButton(onClick = { })
         }
     }
 }
+
+@Composable
+fun SaveButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
+) {
+    Button(
+        onClick = onClick,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(48.dp),
+        enabled = enabled,
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Text(
+            text = stringResource(R.string.save),
+            style = MaterialTheme.typography.titleMedium
+        )
+    }
+}
+
 
 

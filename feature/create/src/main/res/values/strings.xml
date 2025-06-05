@@ -123,5 +123,8 @@
     <string name="note">Note</string>
     <string name="note_placeholder">Enter your thoughts, observations, or comments...</string>
 
+    <string name="save">Save</string>
+
+
 
 </resources>
