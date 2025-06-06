@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -58,6 +59,8 @@ fun MainScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding)
+
             ) {
                 MtNavHost(
                     navController = navController,

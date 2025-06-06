@@ -4,14 +4,14 @@ import java.time.LocalDate
 
 // Основная запись пользователя на день
 data class DailyMoodEntry(
-    val date: LocalDate,
-    val moodRating: DayMoodRating,
-    val emotions: List<EmotionCategory>?,
-    val sleep: SleepQuality?,
-    val nutrition:  List<NutritionQuality>?,
-    val hobbies: List<HobbyCategory>?,
-    val health: List<HealthState>?,
-    val weather: WeatherType?,
-    val habits: List<HabitType>?,
-    val note: String? = null
+    val date: LocalDate = LocalDate.now(),
+    val moodRating: DayMoodRating = DayMoodRating.NORMAL,
+    val emotions: List<EmotionCategory> = emptyList(),
+    val sleep: SleepQuality = SleepQuality(),
+    val nutrition:  List<NutritionQuality> = emptyList(),
+    val hobbies: List<HobbyCategory> = emptyList(),
+    val health: List<HealthState> = emptyList(),
+    val weather: WeatherType?= null,
+    val habits: List<HabitType> = emptyList(),
+    val note: String = ""
 )
