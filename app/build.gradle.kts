@@ -35,7 +35,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
-        debug {  isDebuggable = true}
+        debug { isDebuggable = true }
     }
 
     compileOptions {
@@ -46,7 +46,7 @@ android {
     kotlinOptions {
         jvmTarget = libs.versions.java.get()
     }
-    
+
     buildFeatures {
         compose = true
     }
@@ -91,57 +91,77 @@ dependencies {
     //implementation(libs.androidx.hilt.lifecycle.viewmodel)
 }
 
+
 val groupId = "soft.divan.moodtracker"
-val artifactIdBase = "moodtracker"
+val artifactId = "moodtracker"
 val versionName = "0.0.1"
+
 val localRepoPath = "${rootProject.projectDir}/local-maven-repo"
 
 afterEvaluate {
     publishing {
         publications {
+            // Debug APK
             register<MavenPublication>("debugApk") {
                 groupId = groupId
-                artifactId = "${artifactIdBase}-debug-apk"
+                artifactId = "${artifactId}-debug-apk"
                 version = versionName
 
                 val debugApk = layout.buildDirectory.file("outputs/apk/debug/app-debug.apk")
-                artifact(debugApk.get().asFile) {
+                artifact(debugApk) {
                     extension = "apk"
                     builtBy(tasks.named("assembleDebug"))
                 }
             }
 
+            // Release APK
             register<MavenPublication>("releaseApk") {
                 groupId = groupId
-                artifactId = "${artifactIdBase}-release-apk"
+                artifactId = "${artifactId}-release-apk"
                 version = versionName
 
                 val releaseApk = layout.buildDirectory.file("outputs/apk/release/app-release.apk")
-                artifact(releaseApk.get().asFile) {
+                artifact(releaseApk) {
                     extension = "apk"
                     builtBy(tasks.named("assembleRelease"))
                 }
             }
 
+            // Unsigned Release APK
+            register<MavenPublication>("releaseUnsignedApk") {
+                groupId = groupId
+                artifactId = "${artifactId}-release-unsigned-apk"
+                version = versionName
+
+                val unsignedApk =
+                    layout.buildDirectory.file("outputs/apk/release/app-release-unsigned.apk")
+                artifact(unsignedApk) {
+                    extension = "apk"
+                    builtBy(tasks.named("assembleRelease"))
+                }
+            }
+
+            // Debug AAB
             register<MavenPublication>("debugAab") {
                 groupId = groupId
-                artifactId = "${artifactIdBase}-debug-aab"
+                artifactId = "${artifactId}-debug-aab"
                 version = versionName
 
                 val debugAab = layout.buildDirectory.file("outputs/bundle/debug/app-debug.aab")
-                artifact(debugAab.get().asFile) {
+                artifact(debugAab) {
                     extension = "aab"
                     builtBy(tasks.named("bundleDebug"))
                 }
             }
 
+            // Release AAB
             register<MavenPublication>("releaseAab") {
                 groupId = groupId
-                artifactId = "${artifactIdBase}-release-aab"
+                artifactId = "${artifactId}-release-aab"
                 version = versionName
 
                 val releaseAab = layout.buildDirectory.file("outputs/bundle/release/app-release.aab")
-                artifact(releaseAab.get().asFile) {
+                artifact(releaseAab) {
                     extension = "aab"
                     builtBy(tasks.named("bundleRelease"))
                 }
@@ -168,6 +188,12 @@ afterEvaluate {
         dependsOn("assembleRelease", "publishReleaseApkPublicationToLocalMavenRepository")
     }
 
+    tasks.register("publishUnsignedApkToLocal") {
+        group = "publishing"
+        description = "Publishes unsigned release APK to local Maven"
+        dependsOn("assembleRelease", "publishReleaseUnsignedApkPublicationToLocalMavenRepository")
+    }
+
     tasks.register("publishDebugAabToLocal") {
         group = "publishing"
         description = "Publishes debug AAB to local Maven"
@@ -180,14 +206,20 @@ afterEvaluate {
         dependsOn("bundleRelease", "publishReleaseAabPublicationToLocalMavenRepository")
     }
 
-    tasks.register("publishAllArtifactsToLocal") {
+    val publishAllArtifactsToLocal by tasks.registering {
         group = "publishing"
-        description = "Builds and publishes all APKs and AABs to local Maven"
-        dependsOn(
+        description = "Builds and publishes all APKs and AABs to local Maven (ignores failures)"
+
+        val subtaskNames = listOf(
             "publishDebugApkToLocal",
             "publishReleaseApkToLocal",
+            "publishUnsignedApkToLocal",
             "publishDebugAabToLocal",
-            "publishReleaseAabToLocal"
-        )
+            "publishReleaseAabToLocal",
+
+            )
+        dependsOn(subtaskNames)
+
     }
+
 }
