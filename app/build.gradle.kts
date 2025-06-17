@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     id("soft.divan.plugins.mavenPublish")
-
+    id("maven-publish")
 }
 
 
@@ -35,6 +35,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+        debug {  isDebuggable = true}
     }
 
     compileOptions {
@@ -88,4 +89,47 @@ dependencies {
     // Hilt Jetpack components
     //implementation(libs.hilt.navigation.compose)
     //implementation(libs.androidx.hilt.lifecycle.viewmodel)
+}
+
+
+val groupId = "soft.divan.moodtracker"
+val artifactId = "moodtracker"
+val versionName = "0.0.1"
+val apkFilePath = "${buildDir}/outputs/apk/debug/app-debug.apk"
+val apkFile = file(apkFilePath)
+
+publishing {
+    publications {
+        create<MavenPublication>("releaseApk") {
+            groupId = groupId
+            artifactId = artifactId
+            version = versionName
+
+            if (apkFile.exists()) {
+                artifact(apkFile) {
+                    extension = "apk"
+                }
+            } else {
+                logger.warn("APK file not found at $apkFilePath.")
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "localMaven"
+            url = uri("${rootProject.projectDir}/local-maven-repo")
+        }
+    }
+}
+
+afterEvaluate {
+    tasks.matching { it.name.startsWith("publishReleaseApkPublication") }.configureEach {
+        dependsOn("packageDebug")
+    }
+}
+
+tasks.register("publishDebugApkToLocal") {
+    group = "publishing"
+    description = "Builds debug APK and publishes it to local Maven repository"
+    dependsOn("publishReleaseApkPublicationToLocalMavenRepository")
 }
