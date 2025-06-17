@@ -91,45 +91,103 @@ dependencies {
     //implementation(libs.androidx.hilt.lifecycle.viewmodel)
 }
 
-
 val groupId = "soft.divan.moodtracker"
-val artifactId = "moodtracker"
+val artifactIdBase = "moodtracker"
 val versionName = "0.0.1"
-val apkFilePath = "${buildDir}/outputs/apk/debug/app-debug.apk"
-val apkFile = file(apkFilePath)
+val localRepoPath = "${rootProject.projectDir}/local-maven-repo"
 
-publishing {
-    publications {
-        create<MavenPublication>("releaseApk") {
-            groupId = groupId
-            artifactId = artifactId
-            version = versionName
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("debugApk") {
+                groupId = groupId
+                artifactId = "${artifactIdBase}-debug-apk"
+                version = versionName
 
-            if (apkFile.exists()) {
-                artifact(apkFile) {
+                val debugApk = layout.buildDirectory.file("outputs/apk/debug/app-debug.apk")
+                artifact(debugApk.get().asFile) {
                     extension = "apk"
+                    builtBy(tasks.named("assembleDebug"))
                 }
-            } else {
-                logger.warn("APK file not found at $apkFilePath.")
+            }
+
+            register<MavenPublication>("releaseApk") {
+                groupId = groupId
+                artifactId = "${artifactIdBase}-release-apk"
+                version = versionName
+
+                val releaseApk = layout.buildDirectory.file("outputs/apk/release/app-release.apk")
+                artifact(releaseApk.get().asFile) {
+                    extension = "apk"
+                    builtBy(tasks.named("assembleRelease"))
+                }
+            }
+
+            register<MavenPublication>("debugAab") {
+                groupId = groupId
+                artifactId = "${artifactIdBase}-debug-aab"
+                version = versionName
+
+                val debugAab = layout.buildDirectory.file("outputs/bundle/debug/app-debug.aab")
+                artifact(debugAab.get().asFile) {
+                    extension = "aab"
+                    builtBy(tasks.named("bundleDebug"))
+                }
+            }
+
+            register<MavenPublication>("releaseAab") {
+                groupId = groupId
+                artifactId = "${artifactIdBase}-release-aab"
+                version = versionName
+
+                val releaseAab = layout.buildDirectory.file("outputs/bundle/release/app-release.aab")
+                artifact(releaseAab.get().asFile) {
+                    extension = "aab"
+                    builtBy(tasks.named("bundleRelease"))
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "localMaven"
+                url = uri(localRepoPath)
             }
         }
     }
-    repositories {
-        maven {
-            name = "localMaven"
-            url = uri("${rootProject.projectDir}/local-maven-repo")
-        }
-    }
-}
 
-afterEvaluate {
-    tasks.matching { it.name.startsWith("publishReleaseApkPublication") }.configureEach {
-        dependsOn("packageDebug")
+    tasks.register("publishDebugApkToLocal") {
+        group = "publishing"
+        description = "Publishes debug APK to local Maven"
+        dependsOn("assembleDebug", "publishDebugApkPublicationToLocalMavenRepository")
     }
-}
 
-tasks.register("publishDebugApkToLocal") {
-    group = "publishing"
-    description = "Builds debug APK and publishes it to local Maven repository"
-    dependsOn("publishReleaseApkPublicationToLocalMavenRepository")
+    tasks.register("publishReleaseApkToLocal") {
+        group = "publishing"
+        description = "Publishes release APK to local Maven"
+        dependsOn("assembleRelease", "publishReleaseApkPublicationToLocalMavenRepository")
+    }
+
+    tasks.register("publishDebugAabToLocal") {
+        group = "publishing"
+        description = "Publishes debug AAB to local Maven"
+        dependsOn("bundleDebug", "publishDebugAabPublicationToLocalMavenRepository")
+    }
+
+    tasks.register("publishReleaseAabToLocal") {
+        group = "publishing"
+        description = "Publishes release AAB to local Maven"
+        dependsOn("bundleRelease", "publishReleaseAabPublicationToLocalMavenRepository")
+    }
+
+    tasks.register("publishAllArtifactsToLocal") {
+        group = "publishing"
+        description = "Builds and publishes all APKs and AABs to local Maven"
+        dependsOn(
+            "publishDebugApkToLocal",
+            "publishReleaseApkToLocal",
+            "publishDebugAabToLocal",
+            "publishReleaseAabToLocal"
+        )
+    }
 }
