@@ -9,7 +9,7 @@ versionCode = "1"
 versionName = "0.0.1"
 
 # ==== Versioning configuration ====
-agp = "8.8.2"
+agp = "8.10.1"
 kotlin = "2.1.10"
 java = "21"
 coreKtx = "1.16.0"
@@ -24,7 +24,6 @@ androidxHiltNavigationCompose = "1.2.0"
 ksp = "2.1.10-1.0.30"
 appcompat = "1.7.0"
 material = "1.12.0"
-jetbrainsKotlinJvm = "2.1.10"
 uiAndroid = "1.8.0"
 material3 = "1.3.2"
 materialIconsExtended = "1.7.8"
@@ -62,7 +61,7 @@ ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
-
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle-api", version.ref = "agp" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -71,6 +70,7 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
 
 
