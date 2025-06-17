@@ -1,9 +1,13 @@
+package soft.divan.plugins.mavenPublish
+
+
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
-import java.io.File
 
 @CacheableTask
 abstract class LocalMavenPublishTask : DefaultTask() {
@@ -17,19 +21,29 @@ abstract class LocalMavenPublishTask : DefaultTask() {
     @get:Input
     abstract val version: Property<String>
 
+    @get:OutputFile
+    val outputFile: RegularFileProperty = project.objects.fileProperty()
+
+    init {
+        outputFile.convention(
+            project.rootProject.layout.projectDirectory
+                .file("local-maven-repo/metadata/${groupId.get()}/$}${name}/metadata.txt")
+        )
+
+    }
 
     @TaskAction
     fun publish() {
-
-        val buildDir = project.buildDir
-        val apkOrAabFile = buildDir.resolve("outputs/apk/debug/app-debug.apk") // или aab
-
-        val localMavenDir = File(project.rootDir, "local-maven-repo/${groupId.get().replace('.', '/')}/${artifactId.get()}/${version.get()}")
-        localMavenDir.mkdirs()
-
-        val targetFile = File(localMavenDir, "${artifactId.get()}-${version.get()}.apk")
-        apkOrAabFile.copyTo(targetFile, overwrite = true)
-
-        println("Published to: ${targetFile.absolutePath}")
+        val file = outputFile.get().asFile
+        file.parentFile.mkdirs()
+        file.writeText(
+            """
+            groupId=${groupId.get()}
+            artifactId=${artifactId.get()}
+            version=${version.get()}
+            timestamp=${System.currentTimeMillis()}
+            """.trimIndent()
+        )
+        println("Metadata written to ${file.absolutePath}")
     }
 }
