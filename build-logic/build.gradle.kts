@@ -16,6 +16,12 @@ dependencies {
     compileOnly(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
     compileOnly(libs.android.gradlePlugin)
     implementation(gradleKotlinDsl())
+
+    implementation(libs.gradle)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.hilt.android.gradle.plugin)
+    implementation(libs.com.google.devtools.ksp.gradle.plugin)
+
 }
 
 gradlePlugin {
@@ -23,6 +29,12 @@ gradlePlugin {
         register("LocalMavenPublishPlugin") {
             id = "soft.divan.plugins.mavenPublish"
             implementationClass = "soft.divan.plugins.mavenPublish.LocalMavenPublishPlugin"
+        }
+    }
+    plugins {
+        register("AndroidConfigPlugin") {
+            id = "soft.divan.plugins.androidConfigPlugin"
+            implementationClass = "soft.divan.plugins.convention.AndroidConfigPlugin"
         }
     }
 }
