@@ -32,9 +32,9 @@ gradlePlugin {
         }
     }
     plugins {
-        register("AndroidConfigPlugin") {
-            id = "soft.divan.plugins.androidConfigPlugin"
-            implementationClass = "soft.divan.plugins.convention.AndroidConfigPlugin"
+        register("AppConfigPlugin") {
+            id = "soft.divan.plugins.appConfigPlugin"
+            implementationClass = "soft.divan.plugins.convention.AppConfigPlugin"
         }
     }
 }

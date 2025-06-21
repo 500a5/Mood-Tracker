@@ -9,7 +9,7 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class AndroidConfigPlugin : Plugin<Project> {
+class AppConfigPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.plugins.withId("com.android.application") {
             val versionCatalog = project.the<VersionCatalogsExtension>().named("libs")

@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     id("soft.divan.plugins.mavenPublish")
-    id("soft.divan.plugins.androidConfigPlugin")
+    id("soft.divan.plugins.appConfigPlugin")
 }
 
 localMavenPublish {
