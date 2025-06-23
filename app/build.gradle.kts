@@ -4,41 +4,14 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    id("soft.divan.plugins.mavenPublish")
+    id("soft.divan.plugins.appConfigPlugin")
 }
 
-android {
-    namespace = "soft.divan.moodtracker"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-
-    defaultConfig {
-        applicationId = libs.versions.applicationId.get()
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = libs.versions.versionCode.get().toInt()
-        versionName = libs.versions.versionName.get()
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
-        targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
-    }
-
-    kotlinOptions {
-        jvmTarget = libs.versions.java.get()
-    }
-    
-    buildFeatures {
-        compose = true
-    }
+localMavenPublish {
+    groupId = "moodtracker"
+    artifactId = "moodtracker"
+    version = "0.0.1"
 }
 
 dependencies {

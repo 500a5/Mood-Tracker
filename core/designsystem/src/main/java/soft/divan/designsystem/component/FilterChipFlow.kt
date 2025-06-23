@@ -2,6 +2,7 @@ package soft.divan.designsystem.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -43,6 +44,7 @@ fun FilterChipFlowPreview() {
 }
 
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun <T> FilterChipFlow(
     items: List<T>,
