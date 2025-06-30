@@ -1,9 +1,11 @@
 package soft.divan.moodtracker.core.model
 
 import java.time.LocalDate
+import java.util.UUID
 
 // Основная запись пользователя на день
 data class DailyMoodEntry(
+    val id: String = UUID.randomUUID().toString(),
     val date: LocalDate = LocalDate.now(),
     val moodRating: DayMoodRating = DayMoodRating.NORMAL,
     val emotions: List<EmotionCategory> = emptyList(),

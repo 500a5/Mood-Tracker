@@ -2,11 +2,13 @@ package soft.divan.moodtracker.feature.create.presenter
 
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import soft.divan.moodtracker.core.model.DailyMoodEntry
 import soft.divan.moodtracker.core.model.DayMoodRating
 import soft.divan.moodtracker.core.model.EmotionCategory
@@ -16,11 +18,17 @@ import soft.divan.moodtracker.core.model.HobbyCategory
 import soft.divan.moodtracker.core.model.NutritionQuality
 import soft.divan.moodtracker.core.model.SleepQuality
 import soft.divan.moodtracker.core.model.WeatherType
+import soft.divan.moodtracker.feature.create.domain.usecase.SaveDailyMoodEntryUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class CreateMoodViewModel @Inject constructor() : ViewModel() {
+class CreateMoodViewModel @Inject constructor(
+    private val saveDailyMoodEntryUseCase: SaveDailyMoodEntryUseCase
+) : ViewModel() {
 
+    init {
+
+    }
     private val _uiState = MutableStateFlow(DailyMoodEntry())
     val uiState: StateFlow<DailyMoodEntry> = _uiState.asStateFlow()
 
@@ -96,14 +104,14 @@ class CreateMoodViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+
     fun updateNote(note: String) {
         _uiState.update { it.copy(note = note) }
     }
 
     fun saveDay() {
-        val currentState = _uiState.value
-        // Здесь можно сохранить в базу данных или отправить на сервер
-        // Пример:
-        // repository.saveDayMood(currentState)
+      viewModelScope.launch {
+          saveDailyMoodEntryUseCase.invoke(uiState.value)
+      }
     }
 }
