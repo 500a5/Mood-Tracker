@@ -23,9 +23,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import soft.divan.data_ui.data.mapToPresenter
 import soft.divan.designsystem.theme.MoodTrackerTheme
-import soft.divan.moodtracker.core.model.DayMoodRating
-import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
+import soft.divan.moodtracker.core.domain.model.DayMoodRating
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable

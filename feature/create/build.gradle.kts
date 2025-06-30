@@ -36,13 +36,13 @@ dependencies {
 
     implementation(projects.core.designsystem)
     implementation(projects.core.database)
-
+implementation(projects.core.dataUi)
+    implementation(projects.core.domain)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.ui.tooling.preview.android)
-    implementation(projects.core.model)
     debugImplementation(libs.ui.tooling)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

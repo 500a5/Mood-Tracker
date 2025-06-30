@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.composable
 import soft.divan.moodtracker.feature.entries.R
-import soft.divan.moodtracker.feature.entries.presenter.MoodFeedScreen
+import soft.divan.moodtracker.feature.entries.presenter.EntriesScreen
 
 
 object EntriesEntry : FeatureEntry {
@@ -22,7 +22,7 @@ object EntriesEntry : FeatureEntry {
 
     override fun NavGraphBuilder.composable(navController: NavController) {
         composable(EntriesEntry.route) {
-            MoodFeedScreen(navController)
+            EntriesScreen(navController)
         }
     }
 }

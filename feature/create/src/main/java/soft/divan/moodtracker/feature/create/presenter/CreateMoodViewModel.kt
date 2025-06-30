@@ -9,16 +9,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import soft.divan.moodtracker.core.model.DailyMoodEntry
-import soft.divan.moodtracker.core.model.DayMoodRating
-import soft.divan.moodtracker.core.model.EmotionCategory
-import soft.divan.moodtracker.core.model.HabitType
-import soft.divan.moodtracker.core.model.HealthState
-import soft.divan.moodtracker.core.model.HobbyCategory
-import soft.divan.moodtracker.core.model.NutritionQuality
-import soft.divan.moodtracker.core.model.SleepQuality
-import soft.divan.moodtracker.core.model.WeatherType
-import soft.divan.moodtracker.feature.create.domain.usecase.SaveDailyMoodEntryUseCase
+import soft.divan.moodtracker.core.domain.model.DailyMoodEntry
+import soft.divan.moodtracker.core.domain.model.DayMoodRating
+import soft.divan.moodtracker.core.domain.model.EmotionCategory
+import soft.divan.moodtracker.core.domain.model.HabitType
+import soft.divan.moodtracker.core.domain.model.HealthState
+import soft.divan.moodtracker.core.domain.model.HobbyCategory
+import soft.divan.moodtracker.core.domain.model.NutritionQuality
+import soft.divan.moodtracker.core.domain.model.SleepQuality
+import soft.divan.moodtracker.core.domain.model.WeatherType
+import soft.divan.moodtracker.core.domain.usecase.SaveDailyMoodEntryUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,9 +26,6 @@ class CreateMoodViewModel @Inject constructor(
     private val saveDailyMoodEntryUseCase: SaveDailyMoodEntryUseCase
 ) : ViewModel() {
 
-    init {
-
-    }
     private val _uiState = MutableStateFlow(DailyMoodEntry())
     val uiState: StateFlow<DailyMoodEntry> = _uiState.asStateFlow()
 

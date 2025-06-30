@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import soft.divan.designsystem.component.LabeledBorderedContainer
 import soft.divan.designsystem.theme.MoodTrackerTheme
-import soft.divan.moodtracker.core.model.SleepQuality
+import soft.divan.moodtracker.core.domain.model.SleepQuality
 import soft.divan.moodtracker.feature.create.R
 
 

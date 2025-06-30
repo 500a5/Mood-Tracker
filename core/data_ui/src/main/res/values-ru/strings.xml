@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calendar">Календарь</string>
+    <string name="create">Create mood</string>
+
+    <string name="mood_amazing">Супер</string>
+    <string name="mood_good">Хорошо</string>
+    <string name="mood_normal">Нормально</string>
+    <string name="mood_bad">Плохо</string>
+    <string name="mood_awful">Ужасно</string>
+    <string name="how_was_your_day">Как прошел твой день?</string>
+
+    <string name="dream">Сон</string>
+    <string name="number_of_hours_of_sleep">Количество часов сна: %1$s</string>
+    <string name="went_to_bed_late">Лёг поздно</string>
+    <string name="woke_up_at_night">Просыпался ночью</string>
+    <string name="woke_up_tired">Проснулся уставшим</string>
+
+    <string name="emotions">Эмоции</string>
+    <string name="emotion_happy">Счастье</string>
+    <string name="emotion_anxious">Тревога</string>
+    <string name="emotion_sad">Грусть</string>
+    <string name="emotion_angry">Злость</string>
+    <string name="emotion_grateful">Благодарность</string>
+    <string name="emotion_calm">Спокойствие</string>
+    <string name="emotion_lonely">Одиночество</string>
+    <string name="emotion_proud">Гордость</string>
+    <string name="emotion_stress">Стресс</string>
+    <string name="emotion_relaxation">Расслабление</string>
+    <string name="emotion_productivity">Продуктивность</string>
+    <string name="emotion_condition">Усталость</string>
+    <string name="emotion_uncertainty">Неуверенность</string>
+
+    <string name="nutrition">Питание</string>
+    <string name="nutrition_healthy">Здоровое питание</string>
+    <string name="nutrition_overeat">Переел(а)</string>
+    <string name="nutrition_skipped_meal">Пропустил(а) приём пищи</string>
+    <string name="nutrition_junk_food">Фастфуд</string>
+
+    <string name="hobby">Хобби</string>
+    <string name="hobby_reading">Чтение</string>
+    <string name="hobby_sports">Спорт</string>
+    <string name="hobby_music">Музыка</string>
+    <string name="hobby_art">Искусство</string>
+    <string name="hobby_walking">Прогулки</string>
+    <string name="hobby_games">Игры</string>
+    <string name="hobby_other">Другое</string>
+
+    <string name="health">Здоровье</string>
+    <string name="health_healthy">Здоров</string>
+    <string name="health_headache">Головная боль</string>
+    <string name="health_stomachache">Боль в животе</string>
+    <string name="health_toothache">Зубная боль</string>
+    <string name="health_fatigue">Усталость</string>
+    <string name="health_illness">Болезнь</string>
+    <string name="health_other">Другое</string>
+
+    <string name="weather">Погода</string>
+    <string name="weather_sunny">Солнечно</string>
+    <string name="weather_cloudy">Облачно</string>
+    <string name="weather_rainy">Дождь</string>
+    <string name="weather_snowy">Снег</string>
+    <string name="weather_windy">Ветрено</string>
+    <string name="weather_foggy">Туман</string>
+
+    <string name="habits">Привычки</string>
+    <string name="habit_alcohol">Алкоголь</string>
+    <string name="habit_smoking">Курение</string>
+    <string name="habit_caffeine">Кофеин</string>
+    <string name="habit_screen_time">Экранное время</string>
+    <string name="habit_meditation">Медитация</string>
+    <string name="habit_exercise">Тренировка</string>
+
+    <string name="note">Заметка</string>
+    <string name="note_placeholder">Введите свои мысли, наблюдения или комментарии...</string>
+
+    <string name="save">Сохранить</string>
+
+
+</resources>

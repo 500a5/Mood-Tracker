@@ -8,12 +8,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import soft.divan.data_ui.data.mapToPresenter
 import soft.divan.designsystem.component.FilterChipFlow
 import soft.divan.designsystem.component.LabeledBorderedContainer
 import soft.divan.designsystem.theme.MoodTrackerTheme
-import soft.divan.moodtracker.core.model.WeatherType
+import soft.divan.moodtracker.core.domain.model.WeatherType
 import soft.divan.moodtracker.feature.create.R
-import soft.divan.moodtracker.feature.create.presenter.data.mapToPresenter
 
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)

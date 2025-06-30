@@ -1,10 +1,9 @@
 package soft.divan.moodtracker.core.database.entity
 
-import android.R.attr.name
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import soft.divan.moodtracker.core.domain.model.DailyMoodEntry
 import java.time.LocalDate
-import soft.divan.moodtracker.core.model.DailyMoodEntry
 import java.util.UUID
 
 
