@@ -21,7 +21,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import soft.divan.moodtracker.core.navigation.FeatureEntry
-import soft.divan.moodtracker.navigation.MtNavHost
+import soft.divan.moodtracker.navigation.mtNavHost
 
 @Composable
 fun MainScreen(
@@ -62,7 +62,7 @@ fun MainScreen(
                     .consumeWindowInsets(contentPadding)
 
             ) {
-                MtNavHost(
+                mtNavHost(
                     navController = navController,
                     feedEntry = entriesEntry,
                     analyticsEntry = analyticsEntry,

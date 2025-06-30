@@ -4,8 +4,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.detekt)
 }
-
+detekt {
+    config.setFrom("$rootDir/config/detekt/detekt.yml") // путь до файла
+    buildUponDefaultConfig = true // необязательно, если хочешь использовать дефолтные + свои изменения
+}
 android {
     namespace = "soft.divan.moodtracker"
     compileSdk = libs.versions.compileSdk.get().toInt()

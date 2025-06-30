@@ -34,7 +34,7 @@ uiToolingPreviewAndroid = "1.8.1"
 uiTooling = "1.8.2"
 room = "2.7.2"
 roomRuntimeAndroid = "2.7.2"
-
+detekt = "1.23.6"
 
 
 [libraries]
@@ -83,5 +83,5 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
-
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
