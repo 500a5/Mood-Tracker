@@ -21,7 +21,7 @@ android {
         versionCode = libs.versions.versionCode.get().toInt()
         versionName = libs.versions.versionName.get()
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "soft.divan.moodtracker.CustomTestRunner"
     }
 
     buildTypes {
@@ -55,6 +55,7 @@ dependencies {
     implementation(projects.feature.calendar)
     implementation(projects.feature.more)
     implementation(projects.feature.create)
+    implementation(projects.core.domain)
 
 
     implementation(libs.androidx.core.ktx)
@@ -76,10 +77,21 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Dagger Hilt
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
 
     // Hilt Jetpack components
     //implementation(libs.hilt.navigation.compose)
     //implementation(libs.androidx.hilt.lifecycle.viewmodel)
+
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.hilt.android.testing)
+    kspAndroidTest(libs.dagger.hilt.android.compiler)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
 }

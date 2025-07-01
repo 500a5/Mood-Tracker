@@ -37,8 +37,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    
-    ksp(libs.hilt.compiler)
+
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
 
     ksp(libs.androidx.room.compiler)
