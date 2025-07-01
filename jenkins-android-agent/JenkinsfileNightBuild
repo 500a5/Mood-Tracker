@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    environment {
+        GRADLE_PROFILER_HOME = "${env.WORKSPACE}/gradle-profiler-0.17.0"
+        ANDROID_HOME = "${tool 'Android_SDK'}"
+    }
+
+    triggers {
+        cron('H 2 * * *')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Prepare gradle-profiler') {
+            steps {
+                script {
+
+                    if (!fileExists("${env.GRADLE_PROFILER_HOME}")) {
+                        sh '''
+                        wget https://services.gradle.org/distributions/gradle-profiler-0.17.0-bin.zip -O gradle-profiler.zip
+                        unzip gradle-profiler.zip
+                        rm gradle-profiler.zip
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Run Gradle Profiler') {
+            steps {
+                dir("${env.GRADLE_PROFILER_HOME}") {
+
+                    sh '''
+                    ./gradle-profiler --project-dir=${WORKSPACE} --scenario-file=${WORKSPACE}/scenarios.properties cleanBuild incrementalBuild
+                    '''
+                }
+            }
+        }
+
+        stage('Archive Reports') {
+            steps {
+                archiveArtifacts artifacts: 'gradle-profiler-0.17.0/build/reports/**', allowEmptyArchive: true
+
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

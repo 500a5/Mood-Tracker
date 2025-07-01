@@ -1,0 +1,86 @@
+pipeline {
+    agent any
+
+    environment {
+
+        ANDROID_HOME = "${tool 'Android_SDK'}"
+        GRADLE_CACHE = "${env.WORKSPACE}/.gradle"
+    }
+
+    options {
+
+        timestamps()
+
+        timeout(time: 30, unit: 'MINUTES')
+
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                echo "Checked out branch: ${env.BRANCH_NAME}"
+            }
+        }
+
+        stage('Setup') {
+            steps {
+
+                echo "Setting up environment..."
+                sh 'chmod +x ./gradlew'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
+                        echo "Building APK for branch ${env.BRANCH_NAME}"
+                        sh './gradlew clean assembleDebug'
+                    } else {
+                        echo "Building APK for feature/other branch"
+                        sh './gradlew clean assembleDebug'
+                    }
+                }
+            }
+        }
+
+        stage('Test') {
+            when {
+                expression {
+                    return env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master'
+                }
+            }
+            steps {
+                echo "Running unit tests"
+                sh './gradlew testDebugUnitTest'
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression {
+                    return env.BRANCH_NAME == 'master'
+                }
+            }
+            steps {
+                echo "Deploying to production / release repository"
+
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Cleaning workspace"
+            cleanWs()
+        }
+        success {
+            echo "Build succeeded"
+        }
+        failure {
+            echo "Build failed"
+        }
+    }
+}
