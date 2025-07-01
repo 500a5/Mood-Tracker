@@ -231,3 +231,6 @@ secrets.properties
 google-services.json
 
 keys.properties
+
+# certificates
+*.cer
