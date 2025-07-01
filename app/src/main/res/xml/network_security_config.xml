@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+    <!-- Доверяем российскому корневому УЦ только для сервисов GigaChat -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">devices.sberbank.ru</domain>
+        <trust-anchors>
+            <!-- raw/russian_root_ca.crt -->
+            <certificates src="@raw/russian_trusted_root_ca" />
+        </trust-anchors>
+    </domain-config>
+
+</network-security-config>

@@ -24,7 +24,7 @@ enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 rootProject.name = "MoodTracker"
 include(":app")
 include(":core:designsystem")
-include(":core:network")
+include(":core:giga_chat_network")
 include(":core:database")
 include(":core:notifications")
 include(":core:domain")

@@ -7,9 +7,10 @@ plugins {
     alias(libs.plugins.detekt)
 }
 detekt {
-    config.setFrom("$rootDir/config/detekt/detekt.yml") // путь до файла
-    buildUponDefaultConfig = true // необязательно, если хочешь использовать дефолтные + свои изменения
+    config.setFrom("$rootDir/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
 }
+
 android {
     namespace = "soft.divan.moodtracker"
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -22,6 +23,7 @@ android {
         versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -39,9 +41,10 @@ android {
     kotlinOptions {
         jvmTarget = libs.versions.java.get()
     }
-    
+
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

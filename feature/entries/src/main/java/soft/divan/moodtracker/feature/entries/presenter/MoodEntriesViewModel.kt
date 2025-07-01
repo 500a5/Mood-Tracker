@@ -3,7 +3,6 @@ package soft.divan.moodtracker.feature.entries.presenter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoodEntriesViewModel @Inject constructor(
-   private val getDailyMoodEntersUseCase: GetDailyMoodEntersUseCase
+    private val getDailyMoodEntersUseCase: GetDailyMoodEntersUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<DailyMoodEntriesUiState>(DailyMoodEntriesUiState.Loading)
@@ -31,9 +30,27 @@ class MoodEntriesViewModel @Inject constructor(
             DailyMoodEntriesUiState.Loading
         )
 
-    fun loadDailyMoodEnters (){
+    fun loadDailyMoodEnters() {
         viewModelScope.launch {
-           _uiState.update { DailyMoodEntriesUiState.Success( getDailyMoodEntersUseCase.invoke().first())}
+            _uiState.update {
+                DailyMoodEntriesUiState.Success(
+                    getDailyMoodEntersUseCase.invoke().first()
+                )
+            }
+        }
     }
-    }
+
+    /*fun test() {
+        viewModelScope.launch(Dispatchers.IO) {
+            getGigaChatRepository.analyzeMessages(
+                listOf(
+                    ChatMessage(
+                        "system",
+                        "Ты — заботливый помощник. Проанализируй эмоциональное состояние."
+                    ),
+                    ChatMessage("user", " Я очень счастлива!")
+                )
+            )
+        }
+    }*/
 }
