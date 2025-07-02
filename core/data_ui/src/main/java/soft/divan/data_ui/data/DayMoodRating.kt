@@ -17,3 +17,11 @@ fun DayMoodRating.mapToPresenter(): soft.divan.data_ui.data.DayMoodRating =
         DayMoodRating.BAD -> DayMoodRating(R.string.mood_bad_emoji, R.string.mood_bad)
         DayMoodRating.AWFUL -> DayMoodRating(R.string.mood_awful_emoji, R.string.mood_awful)
     }
+
+fun DayMoodRating.toInt(): Int = when (this) {
+    DayMoodRating.AWFUL -> 1
+    DayMoodRating.BAD -> 2
+    DayMoodRating.NORMAL -> 3
+    DayMoodRating.GOOD -> 4
+    DayMoodRating.AMAZING -> 5
+}

@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -31,9 +32,12 @@ android {
 
 dependencies {
     implementation(projects.core.navigation)
-
+    implementation(projects.core.domain)
+    implementation(projects.core.dataUi)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(projects.core.designsystem)
-
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     debugImplementation(libs.ui.tooling)
     implementation(libs.androidx.core.ktx)

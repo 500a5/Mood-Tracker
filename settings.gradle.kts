@@ -16,6 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
