@@ -1,6 +1,7 @@
 package soft.divan.moodtracker.feature.more.presenter
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -45,6 +46,7 @@ fun MoodSettingsScreen(
     val themeMode by viewModel.themeMode.collectAsStateWithLifecycle()
 
     Column(
+
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
@@ -69,6 +71,16 @@ fun MoodSettingsScreen(
             selected = themeMode == ThemeMode.SYSTEM,
             onClick = { viewModel.onThemeSelected(ThemeMode.SYSTEM) }
         )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
+        ) {
+            AnimatedPenguin()
+
+        }
     }
 }
 
