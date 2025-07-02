@@ -36,7 +36,7 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     debugImplementation(libs.ui.tooling)

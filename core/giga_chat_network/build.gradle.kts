@@ -69,7 +69,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
 
     implementation(libs.retrofit)

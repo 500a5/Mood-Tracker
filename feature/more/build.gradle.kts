@@ -32,7 +32,7 @@ android {
 
 dependencies {
     implementation(projects.core.navigation)
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(projects.core.designsystem)
     implementation(libs.androidx.ui.tooling.preview.android)

@@ -36,7 +36,7 @@ dependencies {
     implementation(projects.core.dataUi)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(projects.core.designsystem)
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     debugImplementation(libs.ui.tooling)
