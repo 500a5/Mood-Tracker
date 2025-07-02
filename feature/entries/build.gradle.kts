@@ -36,7 +36,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.dataUi)
 
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

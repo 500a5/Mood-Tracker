@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.androidTestImplementation
+import org.gradle.kotlin.dsl.kspTest
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -38,7 +41,7 @@ dependencies {
     implementation(projects.core.database)
 implementation(projects.core.dataUi)
     implementation(projects.core.domain)
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -47,4 +50,6 @@ implementation(projects.core.dataUi)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
 }
