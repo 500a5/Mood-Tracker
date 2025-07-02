@@ -40,17 +40,4 @@ class MoodEntriesViewModel @Inject constructor(
         }
     }
 
-    /*fun test() {
-        viewModelScope.launch(Dispatchers.IO) {
-            getGigaChatRepository.analyzeMessages(
-                listOf(
-                    ChatMessage(
-                        "system",
-                        "Ты — заботливый помощник. Проанализируй эмоциональное состояние."
-                    ),
-                    ChatMessage("user", " Я очень счастлива!")
-                )
-            )
-        }
-    }*/
 }

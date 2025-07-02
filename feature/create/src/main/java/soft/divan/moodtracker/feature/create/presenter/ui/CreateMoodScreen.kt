@@ -113,7 +113,10 @@ fun CreateMoodScreen(
                 onNoteChange = { note -> viewModel.updateNote(note) }
             )
 
-            SaveButton(onClick = { viewModel.saveDay() })
+            SaveButton(onClick = {
+                viewModel.saveDay()
+                navController.popBackStack()
+            })
         }
     }
 }
