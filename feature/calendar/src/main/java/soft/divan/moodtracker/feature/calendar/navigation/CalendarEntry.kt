@@ -1,16 +1,17 @@
 package soft.divan.moodtracker.feature.calendar.navigation
 
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import soft.divan.moodtracker.core.navigation.FeatureEntry
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CalendarMonth
-import androidx.navigation.compose.composable
-
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
+import soft.divan.moodtracker.core.navigation.FeatureEntry
+import soft.divan.moodtracker.feature.calendar.presenter.CalendarScreen
 import soft.divan.moodtracker.feature.mood_calendar.R
-import soft.divan.moodtracker.feature.calendar.presenter.MoodCalendarScreen
 
 
 object CalendarEntry : FeatureEntry {
@@ -20,9 +21,10 @@ object CalendarEntry : FeatureEntry {
     override fun label() = stringResource(R.string.calendar)
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun NavGraphBuilder.composable(navController: NavController) {
         composable(CalendarEntry.route) {
-            MoodCalendarScreen(navController)
+            CalendarScreen(navController = navController)
         }
     }
 }
