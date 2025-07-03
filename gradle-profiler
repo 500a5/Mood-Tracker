@@ -1,0 +1,12 @@
+# scenarios.properties
+cleanBuild {
+  tasks = clean assembleDebug
+  warm-ups = 3
+  iterations = 5
+}
+
+incrementalBuild {
+  tasks = assembleDebug
+  warm-ups = 3
+  iterations = 5
+}
